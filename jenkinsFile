@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Ejecutar Pruebas JMeter') {
             steps {
-                sh 'jmeter -n -t Token.jmx -l results.jtl'
+                bat 'jmeter -n -t Token.jmx -l results.jtl'
             }
         }
         stage('Generar Reporte JMeter') {
             steps {
-                sh 'jmeter -g results.jtl -o report'
+                bat 'jmeter -g results.jtl -o report'
             }
         }
     }
