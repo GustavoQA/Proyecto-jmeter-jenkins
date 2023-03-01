@@ -16,5 +16,12 @@ pipeline {
                 bat 'jmeter -g results.jtl -o report'
             }
         }
+       stage('Publish Report') {
+            steps {
+            
+                perfReport filterRegex: '', sourceDataFiles: '**/*.jtl'
+            
+            }
+        }
     }
 }
