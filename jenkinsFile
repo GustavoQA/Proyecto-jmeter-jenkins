@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clonar Repositorio') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('Ejecutar Pruebas JMeter') {
+            steps {
+                sh 'jmeter -n -t Token.jmx -l results.jtl'
+            }
+        }
+        stage('Generar Reporte JMeter') {
+            steps {
+                sh 'jmeter -g results.jtl -o report'
+            }
+        }
+    }
+}
